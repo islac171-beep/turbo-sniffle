@@ -1,0 +1,425 @@
+/* ================================================================= *
+ * ZEBSIS ULTRA-PRO THEME - Radial Emerald & Obsidian SaaS Design    *
+ * ================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --bg-base: #979797;
+  --bg-surface: rgba(14, 21, 18, 0.78);
+  --bg-surface-elevated: rgba(20, 30, 26, 0.9);
+  --border-hairline: rgba(255, 255, 255, 0.08);
+  --border-emerald: rgba(34, 211, 153, 0.35);
+  --emerald-bright: #000000;
+  --emerald-mid: #10b981;
+  --emerald-deep: #064e3b;
+  --text-primary: #f8fafc;
+  --text-secondary: #000000;
+  --text-dim: #000000;
+}
+
+/* ================================================================= *
+ * BASE & AMBIENT RADIAL LIGHTING                                    *
+ * ================================================================= */
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-base) !important;
+  color: var(--text-primary) !important;
+  scroll-behavior: smooth;
+  letter-spacing: -0.015em;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Engineering Grid + Atmospheric Radial Emerald Glow (Matching Reference) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 75% 18%, rgba(16, 185, 129, 0.16) 0%, rgba(6, 78, 59, 0.06) 35%, transparent 65%),
+    radial-gradient(circle at 15% 85%, rgba(34, 211, 153, 0.08) 0%, transparent 50%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 44px 44px, 44px 44px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--emerald-mid);
+}
+
+/* ================================================================= *
+ * GLASSMORPHISM NAVBAR                                              *
+ * ================================================================= */
+.navbar {
+  background: rgba(6, 9, 8, 0.75) !important;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid var(--border-hairline);
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+}
+
+.navbar-brand {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-primary) !important;
+}
+
+.navbar-brand i {
+  color: var(--emerald-bright);
+  filter: drop-shadow(0 0 8px rgba(34, 211, 153, 0.5));
+}
+
+.navbar-nav .nav-link {
+  color: var(--text-secondary) !important;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.45rem 0.9rem !important;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--text-primary) !important;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.navbar-nav .nav-link.active {
+  color: var(--emerald-bright) !important;
+  background: rgba(34, 211, 153, 0.08);
+}
+
+/* ================================================================= *
+ * SAAS CARDS & TOP HERO BANNER                                      *
+ * ================================================================= */
+.card {
+  background: var(--bg-surface) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-hairline) !important;
+  border-radius: 16px !important;
+  color: var(--text-primary) !important;
+  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.7) !important;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease,
+              box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle top specular highlight line on cards */
+.card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(34, 211, 153, 0.35), transparent);
+  pointer-events: none;
+}
+
+.card:hover {
+  border-color: var(--border-emerald) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 24px 48px -18px rgba(0, 0, 0, 0.85),
+              0 0 28px rgba(16, 185, 129, 0.08) !important;
+}
+
+/* Hero Banner Card Accent */
+#dashboardSection > .row:first-child .card {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(14, 21, 18, 0.9) 55%) !important;
+  border-color: rgba(34, 211, 153, 0.22) !important;
+}
+
+.card-header {
+  background: rgba(255, 255, 255, 0.015) !important;
+  border-bottom: 1px solid var(--border-hairline) !important;
+  padding: 1rem 1.25rem;
+}
+
+.card-footer {
+  background: rgba(0, 0, 0, 0.2) !important;
+  border-top: 1px solid var(--border-hairline) !important;
+}
+
+/* ================================================================= *
+ * TYPOGRAPHY, GRADIENT ACCENTS & AVATAR                             *
+ * ================================================================= */
+h1, h2, h3, .h4, .h5, .h6 {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+}
+
+/* Emerald highlight on the student's name in the hero banner */
+#bannerStudentName {
+  background: linear-gradient(90deg, #34d399, #6ee7b7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-primary {
+  color: var(--emerald-bright) !important;
+}
+
+.text-muted {
+  color: var(--text-secondary) !important;
+}
+
+#profileStudentId,
+#subjectsTableBody td:first-child {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.84rem;
+}
+
+.avatar-circle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  letter-spacing: 1px;
+  background: radial-gradient(circle at 30% 30%, #34d399, #059669) !important;
+  color: #04130d !important;
+  box-shadow: 0 0 0 4px rgba(34, 211, 153, 0.12), 0 0 25px rgba(34, 211, 153, 0.35);
+}
+
+/* ================================================================= *
+ * BUTTONS (Mint-Emerald Primary & Dark Glass Secondary)             *
+ * ================================================================= */
+.btn-primary {
+  background: linear-gradient(180deg, #34d399 0%, #10b981 100%) !important;
+  border: 1px solid #6ee7b7 !important;
+  color: #03150e !important;
+  font-weight: 700;
+  border-radius: 10px !important;
+  padding: 0.55rem 1.15rem;
+  box-shadow: 0 4px 18px rgba(16, 185, 129, 0.3);
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(180deg, #6ee7b7 0%, #34d399 100%) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(52, 211, 153, 0.45);
+}
+
+.btn-outline-primary {
+  color: var(--text-secondary) !important;
+  border: 1px solid var(--border-hairline) !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+  border-radius: 8px !important;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-outline-primary:hover {
+  color: var(--text-primary) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.btn-outline-primary.active {
+  background: rgba(34, 211, 153, 0.14) !important;
+  border-color: var(--emerald-bright) !important;
+  color: var(--emerald-bright) !important;
+}
+
+.btn-outline-secondary {
+  color: var(--text-secondary) !important;
+  border: 1px solid var(--border-hairline) !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+  border-radius: 10px !important;
+  font-weight: 600;
+}
+
+.btn-outline-secondary:hover {
+  background: rgba(255, 255, 255, 0.07) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ================================================================= *
+ * BADGES & OVERRIDES FOR BOOTSTRAP LIGHT UTILITIES                  *
+ * ================================================================= */
+.badge {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.42em 0.78em;
+  border-radius: 7px;
+}
+
+/* Override navbar viewport badge (.bg-light.text-primary) */
+.navbar .badge.bg-light {
+  background: rgba(34, 211, 153, 0.12) !important;
+  color: var(--emerald-bright) !important;
+  border: 1px solid rgba(34, 211, 153, 0.3);
+}
+
+.bg-primary,
+.bg-primary-subtle {
+  background: rgba(34, 211, 153, 0.12) !important;
+  color: var(--emerald-bright) !important;
+  border: 1px solid rgba(34, 211, 153, 0.25) !important;
+}
+
+.bg-success,
+.bg-success-subtle {
+  background: rgba(16, 185, 129, 0.16) !important;
+  color: #34d399 !important;
+  border: 1px solid rgba(52, 211, 153, 0.3) !important;
+}
+
+.bg-info-subtle {
+  background: rgba(56, 189, 248, 0.14) !important;
+  color: #7dd3fc !important;
+  border: 1px solid rgba(56, 189, 248, 0.28) !important;
+}
+
+.bg-warning-subtle {
+  background: rgba(251, 191, 36, 0.14) !important;
+  color: #fcd34d !important;
+  border: 1px solid rgba(251, 191, 36, 0.28) !important;
+}
+
+/* ================================================================= *
+ * TABLES & LIST GROUPS                                              *
+ * ================================================================= */
+.table {
+  --bs-table-bg: transparent;
+  --bs-table-color: var(--text-primary);
+  --bs-table-hover-bg: rgba(34, 211, 153, 0.05);
+  --bs-table-hover-color: var(--text-primary);
+  margin-bottom: 0;
+}
+
+.table > thead th {
+  background: rgba(255, 255, 255, 0.02) !important;
+  color: var(--text-secondary) !important;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--border-hairline) !important;
+  padding: 0.85rem 1rem;
+}
+
+.table > tbody td {
+  border-bottom: 1px solid var(--border-hairline);
+  padding: 0.9rem 1rem;
+  vertical-align: middle;
+}
+
+.table-primary {
+  --bs-table-bg: rgba(34, 211, 153, 0.09) !important;
+}
+
+.list-group-item {
+  background: transparent !important;
+  border-color: var(--border-hairline) !important;
+  color: var(--text-primary) !important;
+  transition: background-color 0.2s ease;
+}
+
+.announcement-item:hover {
+  background: rgba(34, 211, 153, 0.04) !important;
+}
+
+/* ================================================================= *
+ * FORM INPUTS, SELECTS & FOCUS STATES                               *
+ * ================================================================= */
+.form-control,
+.form-select {
+  background-color: rgba(6, 9, 8, 0.65) !important;
+  border: 1px solid var(--border-hairline) !important;
+  color: var(--text-primary) !important;
+  border-radius: 10px !important;
+  padding: 0.6rem 0.9rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-select option {
+  background-color: #0e1512;
+  color: var(--text-primary);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--emerald-bright) !important;
+  box-shadow: 0 0 0 3px rgba(34, 211, 153, 0.16) !important;
+}
+
+.form-control::placeholder {
+  color: var(--text-dim) !important;
+}
+
+.input-group-text {
+  background-color: rgba(6, 9, 8, 0.65) !important;
+  border: 1px solid var(--border-hairline) !important;
+  color: var(--text-secondary) !important;
+  border-radius: 10px 0 0 10px !important;
+}
+
+.input-group .form-control {
+  border-radius: 0 10px 10px 0 !important;
+}
+
+.form-check-input {
+  background-color: rgba(6, 9, 8, 0.8);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.form-check-input:checked {
+  background-color: var(--emerald-mid);
+  border-color: var(--emerald-bright);
+}
+
+.alert-success {
+  background: rgba(16, 185, 129, 0.14) !important;
+  border: 1px solid rgba(52, 211, 153, 0.35) !important;
+  color: #6ee7b7 !important;
+  border-radius: 10px;
+}
+
+/* ================================================================= *
+ * FOOTER & RESPONSIVE ADJUSTMENTS                                   *
+ * ================================================================= */
+footer {
+  background: rgba(6, 9, 8, 0.9) !important;
+  border-top: 1px solid var(--border-hairline) !important;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--emerald-bright);
+  outline-offset: 2px;
+}
+
+.search-box {
+  max-width: 250px;
+}
+
+@media (max-width: 575.98px) {
+  .search-box {
+    max-width: 100%;
+  }
+}
